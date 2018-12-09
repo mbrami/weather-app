@@ -1,0 +1,44 @@
+#importing all the necessary libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+! conda install requests
+import requests
+import re
+
+link = "http://www.tylervigen.com/spurious-correlations"
+f = requests.get(link)
+print(f.text)
+
+#scraping webpage using beautiful soup
+from urllib.request import urlopen
+import bs4
+beautiful=urlopen(link).read()
+soup=bs4.BeautifulSoup(beautiful)
+print(soup.prettify())
+#finding all the scripts to find the relevent chart script(Correlation btwn suicides and US Spending on science)
+scripts = soup.find_all('script')
+print (scripts)
+#finding relevent script
+rel_script = scripts[3].get_text()
+print (rel_script)
+
+#finding just the text with the data
+plt_script = re.search(r'highcharts\((.*)\)', rel_script, re.DOTALL)
+print(plt_script.group(1))
+
+#getting the string to json format
+d =  '"{}"'.format(plt_script.group(1))
+
+#convert json string(plt_script) to json object
+import json
+#obj = open('jdata.txt', 'wb')
+#obj.write(plt_script.group(1))
+#obj.close
+
+with open('jdata.txt', 'w') as outfile:  
+    json.dump(d, outfile)
+    
+    
+with open('jdata.txt') as json_file:
+    j_data = json.load(json_file)

@@ -1,0 +1,118 @@
+{
+			
+			credits: {
+				text: 'tylervigen.com',
+				href: 'http://www.tylervigen.com'
+			},
+			
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: '<p><span style="color:#ba0f27;font-size:24px;font-weight:bold;font-family: \'Lora\'">US spending on science, space, and technology</span></p><br /><br /><span style="font-family: \'Lora\'"> correlates with </span><br /><span style="color:#000000;font-size:24px;font-weight:bold;font-family: \'Lora\'">Suicides by hanging, strangulation and suffocation</span>',
+				style: {
+						color:  '#777'
+				}
+            },
+            subtitle: {
+                text: 'Correlation: 99.79% (r=0.99789126)'
+            },
+			
+			
+			//X Axes!!!
+            xAxis: [{
+                categories: [1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009],
+				labels: {
+					style: {
+						color:  '#000000'
+					}
+				},
+            },
+            {
+                categories: [1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009],
+				labels: {
+					style: {
+						color:  '#ba0f27'
+					}
+				},
+                opposite: true
+            }],
+			
+			//Y Axes!!!
+            yAxis: [{ // Primary yAxis
+            title: {
+                text: 'Hanging suicides',
+                style: {
+                    color: '#000000'
+                }
+            },
+            labels: {
+                format: '{value} suicides',
+                style: {
+                    color: '#000000'
+                }
+            },
+			max:9000,            opposite: true
+        },{ // 2ndary yAxis
+            labels: {
+                format: '${value} billion',
+                style: {
+                    color: '#ba0f27'
+                }
+            },
+			max:30,            title: {
+                text: 'US spending on science',
+                style: {
+                    color: '#ba0f27'
+                }
+            }
+        }],
+		        
+				
+				
+		plotOptions: {
+            series: {
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineWidth: 2
+                    }
+                }
+            }
+        },
+        exporting: {
+            sourceWidth: 1040,
+            sourceHeight: 410,
+            scale: 2,
+            chartOptions: {
+                subtitle: null
+            }
+        },
+				
+            tooltip: {
+                shared: true
+            },
+            series: [{
+                name: 'Hanging suicides',
+                color: '#000000',
+                type: 'spline',
+                data: [5427,5688,6198,6462,6635,7336,7248,7491,8161,8578,9000],
+                tooltip: {
+                    valuePrefix: '',
+                    valueSuffix: ' suicides'
+                }
+            },{
+                name: 'US spending on science',
+                color: '#ba0f27',
+                type: 'spline',
+				xAxis: 1,
+				yAxis: 1,
+                data: [18.079,18.594,19.753,20.734,20.831,23.029,23.597,23.584,25.525,27.731,29.449],
+                tooltip: {
+                    valuePrefix: '$',
+                    valueSuffix: ' billion'
+                },
+				opposite: true
+            }]
+        });
+    }

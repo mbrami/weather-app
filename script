@@ -1,0 +1,36 @@
+#!/bin/bash
+touch 1
+git add 1
+git commit -m "Added 1"
+
+touch 2
+git add 2
+git commit -m "Added 2"
+
+touch 3
+git add 3
+git commit -m "Added 3"
+
+touch 4
+git add 4
+git commit -m "Added 4"
+
+touch 5
+git add 5
+git commit -m "Added 5"
+
+git checkout HEAD@{4} -b feature
+
+touch 6
+git add 6
+git commit -m "Added 6"
+
+touch 7
+git add 7
+git commit -m "added 7"
+
+touch 8
+git add 8
+git commit -m "added 8"
+
+git checkout master 4 5

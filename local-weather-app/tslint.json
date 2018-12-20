@@ -91,11 +91,15 @@
     "radix": true,
     "semicolon": [
       true,
-      "always"
+      "never"
     ],
     "triple-equals": [
       true,
       "allow-null-check"
+    ],
+    "max-line-length": [
+      true,
+      120
     ],
     "typedef-whitespace": [
       true,
